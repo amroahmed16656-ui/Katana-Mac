@@ -1,0 +1,35 @@
+{
+  "name": "katana-laptop",
+  "version": "1.0.0",
+  "description": "Plays a katana unsheathing sound when your laptop wakes up or starts.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:all": "electron-builder --win --mac"
+  },
+  "build": {
+    "appId": "com.katana.laptop",
+    "productName": "Katana",
+    "icon": "assets/icon",
+    "files": ["main.js", "assets/**"],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": ["dmg", "zip"],
+      "icon": "assets/icon.icns"
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "runAfterFinish": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  }
+}
