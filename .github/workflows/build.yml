@@ -19,6 +19,8 @@ jobs:
         run: npm install
 
       - name: Build Windows .exe
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run build:win
 
       - name: Upload Windows installer
@@ -41,7 +43,12 @@ jobs:
         run: npm install
 
       - name: Build Mac .dmg
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run build:mac
 
       - name: Upload Mac installer
         uses: actions/upload-artifact@v4
+        with:
+          name: Katana-Mac
+          path: dist/*.dmg
